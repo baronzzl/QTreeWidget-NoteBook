@@ -6,6 +6,7 @@
 #include "mycombobox.h"
 #include <QInputDialog>
 #include <QDebug>
+#include <myaction.h>
 
 #define C(X) QString::fromLocal8Bit(X)
 NoteTree::NoteTree(QWidget *parent):QTreeWidget(parent)
@@ -13,6 +14,7 @@ NoteTree::NoteTree(QWidget *parent):QTreeWidget(parent)
     setHeaderLabels({C("Tile"), C("Create time"),C("Type")});
     setSelectionMode(SelectionMode::ExtendedSelection);
     setUniformRowHeights(true);  //在数据量大时，设置这个可以提高性能，默认是关闭。
+
 //    setDragEnabled(true);
 //    setDragDropMode(DragDropMode::DragDrop);
 //    setDefaultDropAction(Qt::MoveAction);
@@ -21,6 +23,7 @@ NoteTree::NoteTree(QWidget *parent):QTreeWidget(parent)
     clearAct = new QAction(C("delete all"));
     deleteAct = new QAction(C("delete"));
     addAct = new QAction(C("add note"));
+    test = new myAction(QString("test"),this);
 
     QActionGroup *grp = new QActionGroup(this);
     grp->addAction(clearAct);
@@ -31,12 +34,12 @@ NoteTree::NoteTree(QWidget *parent):QTreeWidget(parent)
 
 
     //for test
-    auto itm = new QTreeWidgetItem(this, QStringList("test"));
-    for(int i = 0; i < 10; i++){
-        Note *note = new Note("tile");
-        auto nitm = new QTreeWidgetItem(itm, QStringList({note->tile, note->recordTime}));
-        nitm->setData(0, Qt::UserRole, QVariant((long long)note));
-    }
+//    auto itm = new QTreeWidgetItem(this, QStringList("test"));
+//    for(int i = 0; i < 10; i++){
+//        Note *note = new Note("tile");
+//        auto nitm = new QTreeWidgetItem(itm, QStringList({note->tile, note->recordTime}));
+//        nitm->setData(0, Qt::UserRole, QVariant((long long)note));
+//    }
 
 }
 
@@ -49,6 +52,9 @@ NoteTree::~NoteTree()
             deleteItem(itm);
         }
     }
+
+    delete test;
+    qDebug() << "action had clear";
 }
 
 void NoteTree::contextMenuEvent(QContextMenuEvent *event)

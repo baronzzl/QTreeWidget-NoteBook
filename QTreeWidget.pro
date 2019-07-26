@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     notetree.cpp \
-    mycombobox.cpp
+    mycombobox.cpp \
+    myaction.cpp
 
 HEADERS  += mainwindow.h \
     notetree.h \
-    mycombobox.h
+    mycombobox.h \
+    myaction.h
 
 FORMS    += mainwindow.ui

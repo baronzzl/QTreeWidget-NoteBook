@@ -12,6 +12,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->mainToolBar->addAction(ui->newNote);
     ui->mainToolBar->addAction(ui->save);
+    ui->mainToolBar->addAction(ui->treeWidget->test);
+
+    ui->splitter->setStretchFactor(0,0);
+    ui->splitter->setStretchFactor(1,1);
+    ui->splitter->setSizes({300,200});
     //ui->treeWidget->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
 }
 

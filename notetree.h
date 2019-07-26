@@ -26,6 +26,7 @@ class NoteTree : public QTreeWidget
 public:
     NoteTree(QWidget *parent = 0);
     ~NoteTree();
+    QAction *test;
 
 protected:
     //鼠标右键点击时会调用此函数，调用过程已经在基类中完成，子类中只要实现子定义的操作进行，这里实现弹出菜单的操作
